@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Otoha — Settings</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <main class="settings">
+      <header class="s-head">
+        <h1 class="s-name">Otoha</h1>
+        <span class="s-version" id="version"></span>
+      </header>
+
+      <section class="s-section">
+        <h2 class="s-title">Network access</h2>
+        <label class="s-toggle">
+          <input type="checkbox" id="net-toggle" />
+          <span>Allow other devices to reach this Mac</span>
+        </label>
+        <p class="s-hint" id="net-hint"></p>
+
+        <div class="s-urls" id="urls" hidden>
+          <p class="s-urls-label">Paste one of these into the Obsidian plugin's “Server URL”:</p>
+          <ul id="url-list"></ul>
+          <p class="s-hint">
+            On the same Wi-Fi, use the LAN URL. To reach it from anywhere, you
+            need a VPN like
+            <a href="#" id="ts-link">Tailscale</a>
+            on both devices (then use the Tailscale URL).
+          </p>
+        </div>
+      </section>
+
+      <p class="s-foot">More features coming soon.</p>
+      <p class="s-copy">© 2026 Otoha</p>
+    </main>
+  </body>
+</html>

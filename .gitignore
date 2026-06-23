@@ -1,0 +1,19 @@
+# ---- secrets (NEVER commit) ----
+app/.tauri-keys/
+*.key
+
+# ---- build artifacts ----
+app/src-tauri/target/
+app/src-tauri/server-dist/
+app/src-tauri/binaries/
+app/src-tauri/models/
+**/node_modules/
+
+# ---- bundled model files (large, downloaded separately) ----
+*.onnx
+voices-*.bin
+
+# ---- local dev / scratch ----
+run-dev.sh
+*.log
+.DS_Store

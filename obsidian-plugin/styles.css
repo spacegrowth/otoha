@@ -1,0 +1,90 @@
+/* In-place highlight of the sentence currently being read. Solid highlighter
+   look — opaque warm fill + dark text — so it's readable in BOTH light and dark
+   themes (a translucent fill let dark-theme light text wash out). Colour is
+   configurable via the "Highlight colour" setting (--otoha-highlight on <body>). */
+.otoha-inplace {
+  background-color: var(--otoha-highlight, #ffd166);
+  color: #1a1a1a;
+  border-radius: 3px;
+}
+.otoha-inplace * { color: #1a1a1a !important; } /* keep bold/code/links readable on the fill */
+
+/* Reading view: real <span> wrappers (the iOS Custom Highlight API was unreliable).
+   Same solid-highlighter look as the editor decoration. */
+.otoha-rmark {
+  background-color: var(--otoha-highlight, #ffd166);
+  color: #1a1a1a;
+  border-radius: 3px;
+}
+
+/* Floating transport bar shown while reading (always visible, not the status bar).
+   Inverted vs the theme: dark bar on light mode, light bar on dark mode. */
+.otoha-bar {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 8px;
+  border-radius: 12px;
+  /* one symmetric border for both themes (neutral gray reads on light & dark) */
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.theme-light .otoha-bar { background: #1f1f1f; color: #f4f4f4; }
+.theme-dark  .otoha-bar { background: #f4f4f4; color: #1f1f1f; }
+
+.otoha-bar button {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 7px;
+}
+.otoha-bar button:focus-visible { outline: none; }
+.otoha-bar button:hover { background: rgba(127, 127, 127, 0.3); }
+.otoha-bar svg { width: 18px; height: 18px; }
+
+.otoha-bar .otoha-bar-status {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+  padding: 0 6px;
+  min-width: 38px;
+  text-align: center;
+}
+.otoha-bar .otoha-bar-speed {
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+  margin-left: 2px;
+  outline: none;
+  text-align: center;
+  text-align-last: center; /* centre the selected value shown in the closed box */
+}
+.otoha-bar .otoha-bar-speed:focus { outline: none; box-shadow: none; }
+
+/* Mobile: lift the bar above Obsidian's bottom navigation, respect the home-bar
+   safe area, and tighten the sizing (the desktop size felt too tall on phone). */
+.is-mobile .otoha-bar {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
+  gap: 0;
+  padding: 3px 5px;
+  border-radius: 11px;
+}
+.is-mobile .otoha-bar button { padding: 8px; }
+.is-mobile .otoha-bar svg { width: 19px; height: 19px; }
+.is-mobile .otoha-bar .otoha-bar-status { min-width: 40px; font-size: 12px; padding: 0 4px; }
+.is-mobile .otoha-bar .otoha-bar-speed { font-size: 12px; padding: 3px 4px; }
