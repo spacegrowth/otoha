@@ -1,9 +1,0 @@
-{
-  "id": "otoha-tts",
-  "name": "Otoha TTS",
-  "version": "0.1.0",
-  "minAppVersion": "1.4.0",
-  "description": "Read the current note aloud (local Kokoro server or the device's built-in voice), highlighting sentence-by-sentence in place.",
-  "author": "Otoha",
-  "isDesktopOnly": false
-}

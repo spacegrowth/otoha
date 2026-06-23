@@ -23,8 +23,9 @@ Three parts:
   manages playback, and reads the current selection in any app (`⌘⌥S`) / stops (`⌘⌥X`).
 - **Server** (`server/`) — a warm in-memory Kokoro HTTP server (holds the model in
   memory for low latency). Bundled into the app; also runnable standalone.
-- **Obsidian plugin** (`obsidian-plugin/`) — reads the active note aloud, highlighting
-  sentence-by-sentence and smooth-scrolling to follow the spoken line.
+- **Obsidian plugin** ([`spacegrowth/otoha-tts`](https://github.com/spacegrowth/otoha-tts))
+  — reads the active note aloud, highlighting sentence-by-sentence and smooth-scrolling
+  to follow the spoken line. Lives in its own repo.
 
 ## Menu-bar indicator
 
@@ -40,13 +41,12 @@ Monochrome: `○` idle · `⠋⠙⠹…` (animated spinner) processing/generatin
 
 ## Obsidian plugin
 
-- Install into a vault: `obsidian-plugin/install.sh /path/to/vault`
-- Tests for the pure logic (parsing, matching, scroll math): `cd obsidian-plugin && npm test`
+The plugin lives in its own repo: **https://github.com/spacegrowth/otoha-tts**
+(install + usage instructions there).
 
 ## Layout
 
 ```
 app/                 Tauri menu-bar app (Rust + minimal web UI)
 server/tts_server.py warm HTTP server (holds the model in memory)
-obsidian-plugin/      Obsidian plugin (main.js, no build step) + tests
 ```
